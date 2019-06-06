@@ -18,10 +18,10 @@ class Medicament extends Model
     protected $fillable = [
         'id_medicament',
         'id_famille',
-        'depot_legal',
+        //'depot_legal',
         'nom_commercial',
-        'effets',
-        'contre_indication',
+        //'effets',
+        //'contre_indication',
         'prix_echantillon'
     ];
 
@@ -38,21 +38,21 @@ class Medicament extends Model
     public function setId_famille($id) {
         $this->id_famille = $id;
     }
-
+/*
     public function getDepot_legal() {
         return $this->depot_legal;
     }
     public function setDepot_legal($id) {
         $this->depot_legal = $id;
     }
-
+*/
     public function getNom_commercial() {
         return $this->nom_commercial;
     }
     public function setNom_commercial($id) {
         $this->nom_commercial = $id;
     }
-
+/*
     public function getEffets() {
         return $this->effets;
     }
@@ -65,7 +65,7 @@ class Medicament extends Model
     }
     public function setContre_indication($id) {
         $this->contre_indication = $id;
-    }
+    }*/
 
     public function getPrix_echantillon() {
         return $this->prix_echantillon;

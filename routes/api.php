@@ -36,6 +36,9 @@ Route::prefix('frais')->group(function () {
 
 Route::prefix('medicament')->group(function(){
     Route::get('listeMedic', 'ControllerMedicament@getListeMedic');
+    Route::post('insertion','ControllerMedcament@insertionMedicament');
+    Route::post('validate','ControllerMedcament@validationMedicament');
+    Route::post('suppression','ControllerMedcament@suppressionMedicament');
 });
 
 Route::prefix('visiteur')->group(function () {

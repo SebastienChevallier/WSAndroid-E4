@@ -43,4 +43,53 @@ class ControllerMedicament extends controller
             return response()->json($erreur, 204);
         }
     }
+
+    public function insertionMedcament(Request $req)
+    {
+        try
+        {
+            $unService= new ServiceMedicament();
+            $id_famille = $req->input('id_famille');
+            $nom_commercial = $req->input('nom_commercial');
+            $prix = $req->input('prix_echantillon');
+            $uneReponse= $unService->insertMedicament($id_famille,$nom_commercial,$prix );
+            return response()->json($uneReponse);
+        }
+        catch (MonException $e) {
+            $erreur = $e->getMessage();
+            return response()->json($erreur, 201);
+        }
+    }
+
+    public function validationFrais(Request $req)
+    {
+        try
+        {
+            $unService= new ServiceMedicament();
+            $id_medicament = $req->input('id_frais');
+            $anneemois = $req->input('anneemois');
+            $nbjustificatifs = $req->input('nbjustificatifs');
+            $uneReponse= $unService->updateMedic();
+            return response()->json($uneReponse);
+        }
+        catch (MonException $e) {
+            $erreur = $e->getMessage();
+            return response()->json($erreur, 201);
+        }
+    }
+
+    public function suppressionFrais(Request $req)
+    {
+        try
+        {
+            $unService= new ServiceMedicament();
+            $id_medicament = $req->input('id_medicament');
+            $uneReponse= $unService->deleteMedic($id_medicament);
+            return response()->json($uneReponse);
+        }
+        catch (MonException $e) {
+            $erreur = $e->getMessage();
+            return response()->json($erreur, 201);
+        }
+    }
 }
