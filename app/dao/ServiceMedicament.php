@@ -38,7 +38,19 @@ class ServiceMedicament
         }
     }
 
-    public function updateFrais($id_medicament, $nom_commercial, $prix_echantillon) {
+    public function getUnMedic($id)
+    {
+        try {
+            $response = DB::table('medicament')
+                ->where('id_medicament', '=', $id)
+                ->first();
+            return $response;
+        } catch (QueryException $e) {
+            throw new MonException($e->getMessage());
+        }
+    }
+
+    public function updateMedic($id_medicament, $nom_commercial, $prix_echantillon) {
         try{
             DB::table('medicament')->where('id_medicament', '=', $id_medicament)
                 ->update(['nom_commercial' => $nom_commercial, 'prix_echantillon' => $prix_echantillon]);
@@ -53,7 +65,7 @@ class ServiceMedicament
         }
     }
 
-    public function deleteFrais($id_medicament){
+    public function deleteMedic($id_medicament){
         try{
             DB::table('medicament')->where('id_medicament', '=', $id_medicament)->delete();
             $response = array(
